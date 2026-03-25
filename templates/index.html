@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Chit Fund Analyzer</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-4xl mx-auto p-6">
+
+    <h1 class="text-3xl font-bold text-center mb-6">
+        Smart Chit Fund vs SIP Analyzer
+    </h1>
+
+    <!-- INPUT FORM -->
+    <div class="bg-white p-6 rounded-xl shadow-md space-y-4">
+
+        <input id="monthly" type="number" placeholder="Monthly Investment (₹)"
+        class="w-full p-3 border rounded">
+
+        <input id="years" type="number" placeholder="Investment Years"
+        class="w-full p-3 border rounded">
+
+        <input id="members" type="number" placeholder="Number of chit members"
+        class="w-full p-3 border rounded">
+
+        <input id="month_number" type="number" placeholder="Month you want to bid"
+        class="w-full p-3 border rounded">
+
+        <input id="defaults" type="number" placeholder="Past default %"
+        class="w-full p-3 border rounded">
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox" id="need_money"> Need money early?
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox" id="registered"> Registered chit company?
+        </label>
+
+        <label class="flex items-center gap-2">
+            <input type="checkbox" id="known_members"> Known members in chit?
+        </label>
+
+        <button onclick="calculateInvestment()"
+        class="w-full bg-blue-600 text-white p-3 rounded font-bold">
+        Analyze Investment
+        </button>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="results" class="mt-6 hidden bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-bold mb-4">Results</h2>
+
+        <p id="sipResult"></p>
+        <p id="chitResult"></p>
+        <p id="riskResult"></p>
+        <p id="bidPrediction" class="text-blue-600 font-semibold"></p>
+        <p id="recommendation" class="text-green-600 font-bold"></p>
+
+        <canvas id="chart" class="mt-6"></canvas>
+    </div>
+
+</div>
+
+</body>
+</html>
